@@ -42,11 +42,24 @@ class Schedule():
     def subject(self,subjects):
         ''' subject filters the courses by subject '''
         return Schedule([course for course in self.courses if course['subject'] in subjects])
+    
+    def title(self,phrase):
+        ''' filters the courses by phrase in title '''
+        return Schedule([course for course in self.courses if phrase in course['title']])
+    
+    def description(self,phrase):
+        ''' filters the courses by phrase in description '''
+        return Schedule([course for course in self.courses if phrase in course['description']])
+    
+    def waiting(self, number):
+        ''' filters the courses by number of students in waiting list '''
+        return Schedule([course for course in self.courses if course['waiting'] <= number])
+
 
     def sort(self,field):
+        ''' subject filters the courses by field '''
         if field=='subject':
             return Schedule(sorted(self.courses, key= lambda course: course['subject']))
-        else:
-            print("can't sort by "+str(field)+" yet")
-            return self
+        print("can't sort by "+str(field)+" yet")
+        return self
  
