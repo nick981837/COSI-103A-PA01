@@ -53,7 +53,7 @@ class Schedule():
     
     def waiting(self, number):
         ''' filters the courses by number of students in waiting list '''
-        return Schedule([course for course in self.courses if course['waiting'] <= number])
+        return Schedule([course for course in self.courses if int(course['waiting']) <= int(number)])
 
 
     def sort(self,field):
@@ -62,4 +62,9 @@ class Schedule():
             return Schedule(sorted(self.courses, key= lambda course: course['subject']))
         print("can't sort by "+str(field)+" yet")
         return self
+
+s = Schedule()
+s.load_courses()
+s.waiting(20)
+
  
