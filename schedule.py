@@ -45,7 +45,7 @@ class Schedule():
     
     def title(self,phrase):
         ''' filters the courses by phrase in title '''
-        return Schedule([course for course in self.courses if phrase in course['title']])
+        return Schedule([course for course in self.courses if phrase in course['name']])
     
     def description(self,phrase):
         ''' filters the courses by phrase in description '''
@@ -63,8 +63,7 @@ class Schedule():
         print("can't sort by "+str(field)+" yet")
         return self
 
-s = Schedule()
-s.load_courses()
-s.waiting(20)
+
+
 
  

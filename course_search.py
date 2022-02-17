@@ -47,6 +47,7 @@ def topmenu():
         elif command in ['s','subject']:
             subject = input("enter a subject:")
             schedule = schedule.subject([subject])
+        #filters the courses by number of students in waiting list
         elif command in ['w', "waiting_list"]:
             waiting_number = input("enter a number:")
             schedule = schedule.waiting(waiting_number)
