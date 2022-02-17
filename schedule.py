@@ -62,7 +62,10 @@ class Schedule():
             return Schedule(sorted(self.courses, key= lambda course: course['subject']))
         print("can't sort by "+str(field)+" yet")
         return self
-
+    
+    def independent(self, truth_value):
+        '''filters the courses by whether or not they are independent studies'''
+        return Schedule([course for course in self.courses if course['independent_study'] == truth_value])
 
 
 

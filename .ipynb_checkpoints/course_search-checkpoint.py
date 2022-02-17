@@ -7,8 +7,6 @@ from schedule import Schedule
 import sys
 
 schedule = Schedule()
-schedule.load_courses()
-schedule = schedule.enrolled(range(5,1000)) # eliminate courses with no students
 
 TOP_LEVEL_MENU = '''
 quit
@@ -21,6 +19,7 @@ title  (filter by phrase in title)
 description (filter by phrase in description)
 timeofday (filter by day and time, e.g. meets at 11 on Wed)
 waiting_list (filter by number of students in waiting list)
+independent (filter by independent_study == true or independent_study == false.)
 '''
 
 terms = {c['term'] for c in schedule.courses}
@@ -30,7 +29,10 @@ def topmenu():
     topmenu is the top level loop of the course search app
     '''
     global schedule
-    while True:         
+    while True:
+        #moved schedule.load_courses() inside the loop to allow for consecutive queries.
+        schedule.load_courses()
+        schedule = schedule.enrolled(range(5,1000)) # eliminate courses with no students
         command = input(">> (h for help) ")
         if command=='quit':
             return
@@ -58,6 +60,10 @@ def topmenu():
         elif command in ['d', 'description']:
             descrip = input("enter a description:")
             schedule = schedule.description(descrip)
+        elif command in ['i', 'independent']:
+            truth_value = input("enter 't' for True or 'f' for False:")
+            truth_value = True if truth_value == "t" else False
+            schedule = schedule.independent(truth_value)
         else:
             print('command',command,'is not supported')
             continue
