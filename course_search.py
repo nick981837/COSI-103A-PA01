@@ -73,7 +73,7 @@ def topmenu():
         elif command in ['d', 'description']:
             descrip = input("enter a description:")
             schedule = schedule.description(descrip)
-        elif command in ['i', 'independent']:
+        elif command in ['in', 'independent']:
             truth_value = input("enter 't' for True or 'f' for False:")
             truth_value = True if truth_value == "t" else False
             schedule = schedule.independent(truth_value)
