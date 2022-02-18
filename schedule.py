@@ -53,7 +53,8 @@ class Schedule():
 
     def waiting(self, number):
         ''' filters the courses by number of students in waiting list '''
-        return Schedule([course for course in self.courses if int(course['waiting']) <= int(number)])
+        return Schedule([course for course in self.courses
+        if int(course['waiting']) <= int(number)])
 
     def coursenum(self, subject, num):
         '''filters the courses by course number'''
@@ -66,6 +67,15 @@ class Schedule():
         print("can't sort by "+str(field)+" yet")
         return self
 
+    #James's method.
     def independent(self, truth_value):
         '''filters the courses by whether or not they are independent studies'''
         return Schedule([course for course in self.courses if course['independent_study'] == truth_value])
+
+s = Schedule()
+s.load_courses()
+s1 = s.waiting(20)
+for c in s1.courses:
+    print(c)
+
+
