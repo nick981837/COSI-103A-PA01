@@ -66,6 +66,7 @@ class Schedule():
         print("can't sort by "+str(field)+" yet")
         return self
 
+    #James's method.
     def independent(self, truth_value):
         '''filters the courses by whether or not they are independent studies'''
         return Schedule([course for course in self.courses if course['independent_study'] == truth_value])
