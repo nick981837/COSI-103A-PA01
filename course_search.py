@@ -60,7 +60,7 @@ def topmenu():
             schedule = schedule.coursenum(subject,coursenum)
         elif command in ['i','instructor']: #Search by instructor name or email
             nameOrEmail = input("Search by name or email?")
-            if nameOrEmail == "name":
+            if nameOrEmail == "name": #They entered name
                 instructor = input("enter an instructor: ")
                 instructor = instructor.split(" ")
                 schedule = schedule.lastname(instructor)
