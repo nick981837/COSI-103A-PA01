@@ -59,14 +59,14 @@ def topmenu():
            courseNum = input("enter a course number: ")
            schedule = schedule.courseNum(subject,courseNum)
         elif command in ['i','instructor']: #Search by instructor name or email
-           nameOrEmail = input("Search by name or email?")
-           if (nameOrEmail == "name"):
-               instructor = input("enter an instructor: ")
-               instructor = instructor.split(" ")
-               schedule = schedule.lastname(instructor)
-           elif (nameOrEmail == "email"):
-               instructor = input("enter an instructor email: ")
-               schedule = schedule.email(instructor)
+            nameOrEmail = input("Search by name or email?")
+            if (nameOrEmail == "name"):
+                instructor = input("enter an instructor: ")
+                instructor = instructor.split(" ")
+                schedule = schedule.lastname(instructor)
+            elif (nameOrEmail == "email"):
+                instructor = input("enter an instructor email: ")
+                schedule = schedule.email(instructor)
         elif command in ['ti', 'title']:
             title_name = input("enter a title:")
             schedule = schedule.title(title_name)
