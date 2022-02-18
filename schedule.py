@@ -42,19 +42,23 @@ class Schedule():
     def subject(self,subjects):
         ''' subject filters the courses by subject '''
         return Schedule([course for course in self.courses if course['subject'] in subjects])
-    
+
     def title(self,phrase):
         ''' filters the courses by phrase in title '''
         return Schedule([course for course in self.courses if phrase in course['name']])
-    
+
     def description(self,phrase):
         ''' filters the courses by phrase in description '''
         return Schedule([course for course in self.courses if phrase in course['description']])
-    
+
     def waiting(self, number):
         ''' filters the courses by number of students in waiting list '''
-        return Schedule([course for course in self.courses if int(course['waiting']) <= int(number)])
+        return Schedule([course for
+        course in self.courses if int(course['waiting']) <= int(number)])
 
+    def coursenum(self, subject, num):
+        '''filters the courses by course number''' 
+        return Schedule([course for course in self.courses if num in course['coursenum'] and subject in course['subject']])    
 
     def sort(self,field):
         ''' subject filters the courses by field '''
@@ -63,7 +67,12 @@ class Schedule():
         print("can't sort by "+str(field)+" yet")
         return self
 
+    def independent(self, truth_value):
+        '''filters the courses by whether or not they are independent studies'''
+        return Schedule([course for course in self.courses if course['independent_study'] == truth_value])
 
-
-
- 
+s = Schedule()
+s.load_courses()
+s1 = s.waiting(20)
+for c in s1.courses:
+    print(c)
