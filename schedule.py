@@ -55,6 +55,9 @@ class Schedule():
         ''' filters the courses by number of students in waiting list '''
         return Schedule([course for course in self.courses if int(course['waiting']) <= int(number)])
 
+    def coursenum(self, num):
+        '''filters the courses by course number'''
+        return Schedule([course for course in self.courses if num in course['coursenum']])    
 
     def sort(self,field):
         ''' subject filters the courses by field '''
