@@ -72,10 +72,6 @@ class Schedule():
         '''filters the courses by whether or not they are independent studies'''
         return Schedule([course for course in self.courses if course['independent_study'] == truth_value])
 
-s = Schedule()
-s.load_courses()
-s1 = s.waiting(20)
-for c in s1.courses:
-    print(c)
+
 
 
