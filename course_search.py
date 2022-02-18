@@ -55,16 +55,16 @@ def topmenu():
             waiting_number = input("enter a number:")
             schedule = schedule.waiting(waiting_number)
         elif command in ['c','course']: #Search by subject and course num
-           subject = input("enter a subject: ")
-           courseNum = input("enter a course number: ")
-           schedule = schedule.courseNum(subject,courseNum)
+            subject = input("enter a subject: ")
+            coursenum = input("enter a course number: ")
+            schedule = schedule.coursenum(subject,coursenum)
         elif command in ['i','instructor']: #Search by instructor name or email
             nameOrEmail = input("Search by name or email?")
-            if (nameOrEmail == "name"):
+            if nameOrEmail == "name":
                 instructor = input("enter an instructor: ")
                 instructor = instructor.split(" ")
                 schedule = schedule.lastname(instructor)
-            elif (nameOrEmail == "email"):
+            elif nameOrEmail == "email":
                 instructor = input("enter an instructor email: ")
                 schedule = schedule.email(instructor)
         elif command in ['ti', 'title']:
@@ -89,11 +89,10 @@ def topmenu():
 
 def print_course(course):
     '''
-    print_course prints a brief description of the course 
+    print_course prints a brief description of the course
     '''
     print(course['subject'],course['coursenum'],course['section'],
           course['name'],course['term'],course['instructor'], course['waiting'])
 
 if __name__ == '__main__':
     topmenu()
-
